@@ -1,34 +1,54 @@
-/* Global Styles */
+:root {
+  --bg: #ffffff;
+  --text: #1d1d1f;
+  --nav-bg: #ffffff;
+  --nav-text: #1d1d1f;
+}
+
+body.dark {
+  --bg: #1d1d1f;
+  --text: #f2f2f2;
+  --nav-bg: #1d1d1f;
+  --nav-text: #ffffff;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: #fff;
-  color: #1d1d1f;
-  line-height: 1.6;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: background 0.3s, color 0.3s;
 }
 
-header {
-  background-color: #f8f8f8;
-  padding: 1em 2em;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-nav {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1em 2em;
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+  transition: background 0.3s;
 }
 
-nav a {
-  color: #1d1d1f;
-  text-decoration: none;
+.navbar img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links a,
+.nav-links button {
   margin-left: 20px;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  text-decoration: none;
+  color: var(--nav-text);
+  background: none;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
-nav a:hover {
+.nav-links a:hover,
+.nav-links button:hover {
   color: #0071e3;
 }
 
@@ -36,10 +56,6 @@ nav a:hover {
   max-width: 800px;
   margin: 3em auto;
   padding: 0 1.5em;
-}
-
-h1, h2 {
-  font-weight: 600;
 }
 
 footer {
