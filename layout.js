@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.classList.toggle("toggled", isDark);
 
     toggle.addEventListener("click", () => {
-      const willBeDark = !document.body.classList.contains("dark");
-
-      document.body.classList.toggle("dark", willBeDark);
+      const willBeDark = !document.documentElement.classList.contains("dark");
+      
+      document.documentElement.classList.toggle("dark", willBeDark);
       localStorage.setItem("theme", willBeDark ? "dark" : "light");
       toggle.classList.toggle("toggled", willBeDark);
 
