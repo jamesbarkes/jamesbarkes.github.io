@@ -127,21 +127,42 @@ footer {
 
 .language-toggle {
   position: fixed;
-  bottom: 80px;
-  right: 20px;
+  bottom: 20px;
+  left: 20px;
   display: flex;
-  gap: 10px;
+  align-items: center;
   z-index: 1000;
 }
 
-.language-toggle img {
-  width: 28px;
-  height: auto;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: transform 0.2s ease;
+.language-flag {
+  width: 48px;
+  height: 32px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin: 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  flex-shrink: 0;
 }
 
-.language-toggle img:hover {
-  transform: scale(1.1);
+.language-flag.inactive {
+  transform: scale(0.85);
+  filter: grayscale(100%);
+}
+
+.language-flag.active {
+  transform: scale(1);
+  filter: none;
+}
+
+.language-flag.inactive:hover {
+  transform: scale(1);
+  filter: grayscale(0%);
+}
+
+.language-separator {
+  width: 1px;
+  height: 32px;
+  background-color: #ccc;
+  margin: 0 10px;
+  flex-shrink: 0;
 }
