@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <title>James | Projects</title>
+  <script>
+  (function() {
+    try {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    } catch(e) {}
+  })();
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="navbar"></header>
+  <script src="layout.js"></script>
+
+  <div class="container">
+    <h1>Projects</h1>
+    <ul>
+      <li><strong>Interactive Map Translator</strong> – Full-stack Django app that displays translated sentences on a Leaflet map (WIP).</li>
+      <li><strong>Saxophone Tutor App</strong> – Tool to track practice and give feedback to students I mentor.</li>
+      <li><strong>Automated Stock Analysis</strong> – Python script for technical analysis of swing trading opportunities.</li>
+    </ul>
+  </div>
+
+  <div id="footer"></div>
+
+</body>
+</html>

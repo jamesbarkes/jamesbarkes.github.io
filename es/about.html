@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <title>James | About Me</title>
+  <script>
+  (function() {
+    try {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    } catch(e) {}
+  })();
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="navbar"></header>
+  <script src="layout.js"></script>
+
+  <div class="container">
+    <h1>About Me</h1>
+    <p>I'm James — a tech-minded creative passionate about teaching, technology, and travel. I've worked in fast-paced environments, taught music, tutored, and built software projects. Currently improving my Spanish and preparing for a move to Australia.</p>
+  </div>
+
+  <div id="footer"></div>
+
+</body>
+</html>

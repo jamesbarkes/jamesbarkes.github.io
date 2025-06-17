@@ -54,3 +54,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.getElementById("lang-en")?.addEventListener("click", () => {
+  const currentPath = window.location.pathname;
+  if (currentPath.startsWith("/es/")) {
+    window.location.href = currentPath.replace("/es/", "/");
+  }
+});
+
+document.getElementById("lang-es")?.addEventListener("click", () => {
+  const currentPath = window.location.pathname;
+  if (!currentPath.startsWith("/es/")) {
+    const page = currentPath === "/" ? "index.html" : currentPath.split("/").pop();
+    window.location.href = `/es/${page}`;
+  }
+});
