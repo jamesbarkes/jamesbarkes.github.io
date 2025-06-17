@@ -1,50 +1,55 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Inject navbar
+  // Load navbar
   fetch("navbar.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("navbar").innerHTML = html;
-      initTheme(); // load theme after navbar
+    })
+    .then(() => {
+      applySavedTheme(); // Apply theme after navbar
+      updateLogo();      // Update logo after navbar loaded
     });
 
-  // Inject footer
+  // Load footer
   fetch("footer.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("footer").innerHTML = html;
-      initThemeToggle(); // bind theme toggle after footer is loaded
+    })
+    .then(() => {
+      initThemeToggle(); // Hook up toggle after footer
     });
 
-  function initTheme() {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.body.classList.toggle("dark", savedTheme === "dark");
+  function applySavedTheme() {
+    const saved = localStorage.getItem("theme") || "light";
+    document.body.classList.toggle("dark", saved === "dark");
+  }
+
+  function updateLogo() {
+    const logo = document.getElementById("site-logo");
+    const isDark = document.body.classList.contains("dark");
+
+    if (logo) {
+      logo.src = isDark ? "images/Logo-White.png" : "images/Logo-Black.png";
+    }
   }
 
   function initThemeToggle() {
     const toggle = document.getElementById("theme-toggle");
-    const logo = document.getElementById("site-logo");
 
     if (!toggle) return;
 
-    // Set initial position
-    const currentTheme = localStorage.getItem("theme") || "light";
-    setTheme(currentTheme);
+    const isDark = localStorage.getItem("theme") === "dark";
+    toggle.classList.toggle("toggled", isDark);
 
     toggle.addEventListener("click", () => {
-      const newTheme = document.body.classList.contains("dark") ? "light" : "dark";
-      setTheme(newTheme);
+      const willBeDark = !document.body.classList.contains("dark");
+
+      document.body.classList.toggle("dark", willBeDark);
+      localStorage.setItem("theme", willBeDark ? "dark" : "light");
+      toggle.classList.toggle("toggled", willBeDark);
+
+      updateLogo(); // Update logo each time theme changes
     });
-
-    function setTheme(mode) {
-      document.body.classList.toggle("dark", mode === "dark");
-      localStorage.setItem("theme", mode);
-
-      if (logo) {
-        logo.src = mode === "dark" ? "images/Logo-White.png" : "images/Logo-Black.png";
-      }
-
-      // Move toggle circle
-      toggle.classList.toggle("toggled", mode === "dark");
-    }
   }
 });
