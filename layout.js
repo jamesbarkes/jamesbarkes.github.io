@@ -22,12 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applySavedTheme() {
     const saved = localStorage.getItem("theme") || "light";
-    document.body.classList.toggle("dark", saved === "dark");
+    document.documentElement.classList.toggle("dark", saved === "dark");
   }
 
   function updateLogo() {
     const logo = document.getElementById("site-logo");
-    const isDark = document.body.classList.contains("dark");
+    const isDark = document.documentElement.classList.contains("dark");
+
 
     if (logo) {
       logo.src = isDark ? "images/Logo-White.png" : "images/Logo-Black.png";
